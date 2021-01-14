@@ -1,0 +1,9 @@
+sasa,3
+dog,1
+CAT,1
+anTs,1
+can,1
+toe,1
+Crop,1
+six,1
+PoP,3

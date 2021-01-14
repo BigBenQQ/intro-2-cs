@@ -1,0 +1,40 @@
+The program includes three files.
+wave_editor.py is the main program file.
+In order to improve the organization and readability of the main file, we put
+ two certain types of functions into separate dedicated files.
+
+The file screen_handler.py contains functions that involve displaying menus to
+ the user and getting the user's input in response to the menu options. There
+ are two menus, the main menu and the edit menu. For each menu we have
+ a function that displays  it and a function that gets the users input in
+ response to the options displayed. We put the display and the user input in
+ separate functions so that each function would do one thing only.
+
+ The file input_handler.py contains functions that handle files chosen by the
+ user. These include functions that get file names from the user as input and
+ functions that check the validity of their paths and types. There are
+ different functions for getting names of .wav files to edit and composition
+ files to convert to .wav because the validity of the two types of files have
+ different conditions.
+
+ In the main file, the function main() calls the main menu functions from
+ screen_handler.py and it's next actions depend on the input given by
+ the user.
+ If the user chooses to edit a file there are two possible ways for
+ main() to proceed: If the user previously composed a new .wav file, main()
+ applies the function run_edit_mode() on that new .wav file. Otherwise
+ it calls the function get_wav_filename from input_handler.py and then the
+ function load_wave from wave_helper.py in order to get the file the user
+ wishes to edit, and then applies the function run_edit_mode() on that file.
+ The function run_edit_mode calls the edit menu functions from screen_handler
+ .py. There are seven options for actions the user can choose and for each
+ option run_edit_mode calls a different helper function to edit or save the
+ file. The function run_edit_mode only ends after the user saves the file,
+ after which the user will be sent back to the main menu.
+ If the user chooses to compose a new file, main() calls the function
+ get_composition_filename from input_handler.py and calls the function
+ parse_composition_to_audio_data to get the audio data to be saved. main() then
+  asks the user to input a name for the new audio file, calls the function
+  save_wave from wave_helper.py to save the audio file, and sends the user to
+  the edit menu by forcibly changing the user's choice to editing the file.
+ If the user chooses to exit the menu, the program ends.
